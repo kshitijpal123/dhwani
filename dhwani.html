@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Gateway</title>
+    <style>
+      .login {
+        float: right;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+      }
+      .header {
+        background-color: #292c6d;
+        color: white;
+        border-radius: 10px;
+      }
+      .payment {
+        background-color: white;
+        width: 50%;
+        height: 400px;
+        margin: auto;
+        text-align: center;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body style="background-color: #ffc069">
+    <div class="container">
+      <div style="padding: 0 0 50px 0">
+        <header class="header">
+          <div style="display: inline-block">
+            <h1 style="padding: 0 0 0 30px">Dhwani</h1>
+          </div>
+          <div class="login">
+            <h3 style="display: inline-block; padding: 10px 50px 0 0">Home</h3>
+            <h3 style="display: inline-block; padding: 0 50px 0 0">Career</h3>
+            <h3 style="display: inline-block; padding: 0 50px 0 0">Blog</h3>
+            <h3 style="display: inline-block; padding: 0 50px 0 0">Login</h3>
+          </div>
+        </header>
+      </div>
+      <div class="payment">
+        <h1 style="padding: 25px 0 0 0">Payment Gateway</h1>
+        <div>
+          <form action="desired url">
+            <label for="name">Enter Name</label><br />
+            <input
+              style="margin: 10px 0 30px 0"
+              type="text"
+              id="name"
+              name="name"
+            /><br />
+            <label for="card">Card Number*</label><br />
+            <input
+              style="width: 75px; margin: 10px 0 10px 0"
+              type="text"
+              id="card1"
+              name="card1"
+              required
+              maxlength="4"
+              onkeydown="move(event,'', 'card1', 'card2')"
+            />
+            <input
+              style="width: 75px"
+              type="text"
+              id="card2"
+              name="card2"
+              required
+              maxlength="4"
+              onkeydown="move(event,'card1', 'card2', 'card3')"
+            />
+            <input
+              style="width: 75px"
+              type="text"
+              id="card3"
+              name="card3"
+              required
+              maxlength="4"
+              onkeydown="move(event,'card2', 'card3', 'card4')"
+            />
+            <input
+              style="width: 75px"
+              type="text"
+              id="card4"
+              name="card4"
+              required
+              maxlength="4"
+              onkeydown="move(event,'card3', 'card4', '')"
+            /><br /><br />
+            <input type="submit" value="Submit" />
+          </form>
+          <script>
+            function move(e, p, c, n) {
+              var length = document.getElementById(c).value.length;
+              var maxlength = document
+                .getElementById(c)
+                .getAttribute("maxlength");
+              if (length == maxlength) {
+                if (n !== "") {
+                  document.getElementById(n).focus();
+                }
+              }
+              if (length == 0) {
+                if (e.key === "Backspace") {
+                  if (p !== "") {
+                    document.getElementById(p).focus();
+                  }
+                }
+              }
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
